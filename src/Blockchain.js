@@ -1,4 +1,4 @@
-const Block = require('./Block')
+const Block = require('./Block');
 
 class Blockchain{
 
@@ -17,13 +17,14 @@ class Blockchain{
 	createBlock(){
 		const prev_block = this.getLastBlock();
 		return new Block(prev_block.index + 1, prev_block.hash);
-
 	}
 
 	addBlock(newBlock){
 		if (this.blockIsValid(newBlock, this.getLastBlock())) {
 			 this.chain.push(newBlock);
+			 return true;
 		}
+		return false;
   	};
 
   	blockIsValid(block, last_block){
